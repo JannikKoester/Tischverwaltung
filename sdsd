@@ -1,0 +1,13 @@
+#table1 {
+    position: absolute;
+    left:680px;
+}
+#table2 {
+
+    position: absolute;
+    left:480px;
+}
+#table3 {
+    position: absolute;
+    left:280px;
+}
