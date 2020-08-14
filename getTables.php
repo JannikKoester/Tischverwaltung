@@ -6,7 +6,8 @@ require 'settings.php';
 
 
 
-if(isset($_POST['getTables'])){
+if(isset($_POST['getTables']))
+{
 
 
     $_SESSION["month"] = $_POST['month'];
@@ -157,5 +158,225 @@ if(isset($_POST['getTables'])){
 
     }
 
+    //Tisch 1
+    if(isset($_POST['reservierenBtnTisch1Delete']))
+    { // Löscht den Eintrag und macht somit den Tisch frei.
+      
+      $uid = $_SESSION["Tisch1"][0];
+      $sql = "DELETE FROM calenderplanner WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagedeleted"] = '<div class="alert alert-success">
+            Du hast den Tisch 1 wieder frei gemacht.</div>';
+            $_SESSION["Tisch1"] = "FREI";
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+      
+      
+    }
     
+    
+     if(isset($_POST['reservierenBtnTisch1Replace']))
+    {
+      
+      $uid = $_SESSION["Tisch1"][0];
+      $name = $_POST["reservierterNameReplace1"];
+      $sql = "UPDATE calenderplanner SET reserviertvon='$name' WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagereplaced"] = '<div class="alert alert-success">
+            Du hast den Namen der Person an Tisch 1 geändert.</div>';
+            $_SESSION["Tisch1"][4] = $name ;
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+       
+    }
+    //Tisch 1 Ende
+    //Tisch 2
+    if(isset($_POST['reservierenBtnTisch2Delete']))
+    { // Löscht den Eintrag und macht somit den Tisch frei.
+      
+      $uid = $_SESSION["Tisch2"][0];
+      $sql = "DELETE FROM calenderplanner WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagedeleted"] = '<div class="alert alert-success">
+            Du hast den Tisch 2 wieder frei gemacht.</div>';
+            $_SESSION["Tisch2"] = "FREI";
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+      
+      
+    }
+    
+    
+     if(isset($_POST['reservierenBtnTisch2Replace']))
+    {
+      
+      $uid = $_SESSION["Tisch2"][0];
+      $name = $_POST["reservierterNameReplace2"];
+      $sql = "UPDATE calenderplanner SET reserviertvon='$name' WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagereplaced"] = '<div class="alert alert-success">
+            Du hast den Namen der Person an Tisch 2 geändert.</div>';
+            $_SESSION["Tisch2"][4] = $name;
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+       
+    }
+    //Tisch 2 Ende
+
+    //Tisch 3
+    if(isset($_POST['reservierenBtnTisch3Delete']))
+    { // Löscht den Eintrag und macht somit den Tisch frei.
+      
+      $uid = $_SESSION["Tisch3"][0];
+      $sql = "DELETE FROM calenderplanner WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagedeleted"] = '<div class="alert alert-success">
+            Du hast den Tisch 3 wieder frei gemacht.</div>';
+            $_SESSION["Tisch3"] = "FREI";
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+      
+      
+    }
+    
+    
+     if(isset($_POST['reservierenBtnTisch3Replace']))
+    {
+      
+      $uid = $_SESSION["Tisch3"][0];
+      $name = $_POST["reservierterNameReplace3"];
+      $sql = "UPDATE calenderplanner SET reserviertvon='$name' WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagereplaced"] = '<div class="alert alert-success">
+            Du hast den Namen der Person an Tisch 3 geändert.</div>';
+            $_SESSION["Tisch3"][4] = $name;
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+       
+    }
+    //Tisch 3 Ende
+
+    //Tisch 4
+    if(isset($_POST['reservierenBtnTisch4Delete']))
+    { // Löscht den Eintrag und macht somit den Tisch frei.
+      
+      $uid = $_SESSION["Tisch4"][0];
+      $sql = "DELETE FROM calenderplanner WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagedeleted"] = '<div class="alert alert-success">
+            Du hast den Tisch 4 wieder frei gemacht.</div>';
+            $_SESSION["Tisch4"] = "FREI";
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+      
+      
+    }
+    
+    
+     if(isset($_POST['reservierenBtnTisch1Replace']))
+    {
+      
+      $uid = $_SESSION["Tisch4"][0];
+      $name = $_POST["reservierterNameReplace4"];
+      $sql = "UPDATE calenderplanner SET reserviertvon='$name' WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagereplaced"] = '<div class="alert alert-success">
+            Du hast den Namen der Person an Tisch 4 geändert.</div>';
+            $_SESSION["Tisch4"][4] = $name;
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+       
+    }
+    //Tisch 4 Ende
+
+    //Tisch 5
+    if(isset($_POST['reservierenBtnTisch5Delete']))
+    { // Löscht den Eintrag und macht somit den Tisch frei.
+      
+      $uid = $_SESSION["Tisch5"][0];
+      $sql = "DELETE FROM calenderplanner WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagedeleted"] = '<div class="alert alert-success">
+            Du hast den Tisch 5 wieder frei gemacht.</div>';
+            $_SESSION["Tisch5"] = "FREI";
+            
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+      
+      
+    }
+    
+    
+     if(isset($_POST['reservierenBtnTisch5Replace']))
+    {
+      
+      $uid = $_SESSION["Tisch5"][0];
+      $name = $_POST["reservierterNameReplace5"];
+      $sql = "UPDATE calenderplanner SET reserviertvon='$name' WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagereplaced"] = '<div class="alert alert-success">
+            Du hast den Namen der Person an Tisch 5 geändert.</div>';
+            $_SESSION["Tisch5"][4] = $name;
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+       
+    }
+    //Tisch 5 Ende
+
+    //Tisch 6
+    if(isset($_POST['reservierenBtnTisch6Delete']))
+    { // Löscht den Eintrag und macht somit den Tisch frei.
+      
+      $uid = $_SESSION["Tisch6"][0];
+      $sql = "DELETE FROM calenderplanner WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagedeleted"] = '<div class="alert alert-success">
+            Du hast den Tisch 6 wieder frei gemacht.</div>';
+            $_SESSION["Tisch6"] = "FREI";
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+      
+      
+    }
+    
+    
+     if(isset($_POST['reservierenBtnTisch6Replace']))
+    {
+      
+      $uid = $_SESSION["Tisch6"][0];
+      $name = $_POST["reservierterNameReplace6"];
+      $sql = "UPDATE calenderplanner SET reserviertvon='$name' WHERE uniqueid='$uid'";
+      if ($conn->query($sql) === TRUE) {
+        $_SESSION["sucessmessagereplaced"] = '<div class="alert alert-success">
+            Du hast den Namen der Person an Tisch 6 geändert.</div>';
+            $_SESSION["Tisch6"][4] = $name;
+        header("location:index.php?result=gotrecords");
+      } else {
+        echo "Error deleting record: " . $conn->error;
+      }
+       
+    }
+    //Tisch 6 Ende
 ?>

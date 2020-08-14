@@ -32,35 +32,110 @@ require 'modal.php';
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style ="background-color:lightblue;">
 <div class="container">
+<?php
+require 'header.php';
+require 'footer.php';
+?>
 
                         <?php
                         if(isset($_GET['result']))
                         {
                             if($_GET['result'] == "gotrecords")
                             {   
+                                    $selectedjan ='';
+                                    $selectedfeb ='';
+                                    $selectedmar ='';
+                                    $selectedapr ='';
+                                    $selectedmai ='';
+                                    $selectedjun ='';
+                                    $selectedjul ='';
+                                    $selectedaug ='';
+                                    $selectedsep ='';
+                                    $selectedokt ='';
+                                    $selectednov ='';
+                                    $selecteddez ='';
+
+                                switch($_SESSION["month_string"])
+                                {
+                                    
+                                    case "Januar":
+                                    $selectedjan ='selected'; 
+                                    break;
+
+                                    case "Februar":                                    
+                                    $selectedfeb ='selected';   
+                                    break;
+
+                                    case "März":
+                                    $selectedmar ='selected'; 
+                                    break; 
+
+                                    case "April":
+                                    $selectedapr ='selected'; 
+                                    break;
+
+                                    case "Mai":
+                                    $selectedmai ='selected';
+                                    break;
+
+                                    case "Juni":
+                                    $selectedjun ='selected';
+                                    break; 
+
+                                    case "Juli":
+                                    $selectedjul ='selected'; 
+                                    break;
+
+                                    case "August":                                    
+                                    $selectedjaug ='selected'; 
+                                    break;
+                                    
+                                    case "September":
+                                    $selectedsep ='selected'; 
+                                    break;
+
+                                    case "Oktober":
+                                    $selectedokt ='selected'; 
+                                    break;
+
+                                    case "November":
+                                    $selectednov ='selected'; 
+                                    break;
+
+                                    case "Dezember":
+                                    $selecteddez ='selected'; 
+                                     break;
+                                
+
+                                }
+
+
+
+
                                 echo '<form action="getTables.php" method="post">
                                 <div class="form-group">
                                 <label for="sel1">Monat:</label>
                                 <select class="form-control" name="month">
-                                <option value ="Januar">Januar</option>
-                                <option value ="Februar">Februar</option>
-                                <option value ="März">März</option>
-                                <option value ="April">April</option>
-                                <option value ="Mai">Mai</option>
-                                <option value ="Juni">Juni</option>
-                                <option value ="Juli">Juli</option>
-                                <option value ="August">August</option>
-                                <option value ="September">September</option>
-                                <option value ="Oktober">Oktober</option>
-                                <option value ="November">November</option>
-                                <option value ="Dezember">Dezember</option>
+                                <option value ="Januar"'. $selectedjan.'>Januar</option>
+                                <option value ="Februar"'. $selectedfeb.'>Februar</option>
+                                <option value ="März"'. $selectedmar.'>März</option>
+                                <option value ="April"'. $selectedapr.'>April</option>
+                                <option value ="Mai"'. $selectedmai.'>Mai</option>
+                                <option value ="Juni"'. $selectedjun.'>Juni</option>
+                                <option value ="Juli"'. $selectedjul.'>Juli</option>
+                                <option value ="August"'. $selectedaug.'>August</option>
+                                <option value ="September"'. $selectedsep.'>September</option>
+                                <option value ="Oktober"'. $selectedokt.'>Oktober</option>
+                                <option value ="November"'. $selectednov.'>November</option>
+                                <option value ="Dezember"'. $selecteddez.'>Dezember</option>
                                 </select>';
                     echo '<div class="form-group">
         
                     <label for="sel1">Tag:</label>
-                    <select class="form-control" name="day">
+                    <select class="form-control" name="day">                   
+                    <option value = '.$_SESSION["day"].' selected>'.$_SESSION["day"].'</option>
                       <option value ="1">1</option>
                       <option value ="2">2</option>
                       <option value ="3">3</option>
@@ -93,9 +168,12 @@ require 'modal.php';
                       <option value ="30">30</option>
                     </select>
                   </div>
-                  <button name="getTables" type="submit" class="btn btn-primary">Aktualisiere erneut</button>
+                  <button id="trigger" name="getTables" type="submit" class="btn btn-primary" id="aktualisiere">Aktualisiere erneut</button>
                   </form>
                   <h2>'.$_SESSION["day_string"].'. '.$_SESSION["month_string"].' </h2>';
+                  
+
+                
                             }
                             else{
 
@@ -157,6 +235,7 @@ require 'modal.php';
               </div>
               <button name="getTables" type="submit" class="btn btn-primary">Aktualisieren</button>
               </form>';
+              
     
             }
 
@@ -170,7 +249,7 @@ require 'modal.php';
     <div>
 
 
-    <div class="container" style="border:solid;">
+    <div class="container" >
     
         <div class="right-tables">
             <ul>
@@ -188,7 +267,7 @@ require 'modal.php';
                                 }
                                 else
                                 {
-                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal3" style="color:red;"disabled>Tisch 3 ist belegt durch <br>'.$_SESSION["Tisch3"][4].'.</button>';
+                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal_change3" style="color:red;">Tisch 3 ist belegt durch <br>'.$_SESSION["Tisch3"][4].'.</button>';
 
                                 }
 
@@ -218,7 +297,7 @@ require 'modal.php';
                                 }
                                 else
                                 {
-                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal2" style="color:red;"disabled>Tisch 2 ist belegt durch <br>'.$_SESSION["Tisch2"][4].'.</button>';
+                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal_change2" style="color:red;">Tisch 2 ist belegt durch <br>'.$_SESSION["Tisch2"][4].'.</button>';
 
                                 }
 
@@ -247,7 +326,7 @@ require 'modal.php';
                                 }
                                 else
                                 {
-                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal" style="color:red;"disabled>Tisch 1 ist belegt durch <br>'.$_SESSION["Tisch1"][4].'</button>';
+                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal_change" style="color:red;">Tisch 1 ist belegt durch <br>'.$_SESSION["Tisch1"][4].'</button>';
 
                                 }
 
@@ -280,7 +359,7 @@ require 'modal.php';
                                 }
                                 else
                                 {
-                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal4" style="color:red;" disabled>Tisch 4 ist belegt durch <br>'.$_SESSION["Tisch4"][4].'.</button>';
+                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal_change4" style="color:red;" >Tisch 4 ist belegt durch <br>'.$_SESSION["Tisch4"][4].'.</button>';
 
                                 }
 
@@ -310,7 +389,7 @@ require 'modal.php';
                                 }
                                 else
                                 {
-                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal5" style="color:red;"disabled>Tisch 5 ist belegt durch <br>'.$_SESSION["Tisch5"][4].'.</button>';
+                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal_change5" style="color:red;">Tisch 5 ist belegt durch <br>'.$_SESSION["Tisch5"][4].'.</button>';
 
                                 }
 
@@ -339,7 +418,7 @@ require 'modal.php';
                                 }
                                 else
                                 {
-                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal6" style="color:red;"disabled>Tisch 6 ist belegt durch <br>'.$_SESSION["Tisch6"][4].'.</button>';
+                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal_change6" style="color:red;">Tisch 6 ist belegt durch <br>'.$_SESSION["Tisch6"][4].'.</button>';
 
                                 }
 
@@ -355,10 +434,19 @@ require 'modal.php';
                 </li>
             </ul>
         </div>
+        
 <?php
      if(isset( $_SESSION["sucessmessage"])){
         echo $_SESSION["sucessmessage"];
         $_SESSION["sucessmessage"]="";
+     }
+     if(isset( $_SESSION["sucessmessagedeleted"])){
+        echo $_SESSION["sucessmessagedeleted"];
+        $_SESSION["sucessmessagedeleted"]="";
+     }
+     if(isset( $_SESSION["sucessmessagereplaced"])){
+        echo $_SESSION["sucessmessagereplaced"];
+        $_SESSION["sucessmessagereplaced"]="";
      }
                         
             
@@ -366,9 +454,21 @@ require 'modal.php';
  
 
     </div>
-
-    
+        <script type="text/javascript">
+              function codeAddress() {
+                if(document.getElementById('aktualisiere'))
+                {
+                    document.getElementById('aktualisiere').click();
+                }
+                else
+                {
+                    alert("nix gefunden");
+                }
+              }
+              
+              </script>;
 </body>
+
 
 
 

@@ -16,7 +16,8 @@ if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
   $_SESSION["sucessmessage"] = '<div class="alert alert-success">
   Du hast den Tisch erfolgreich reserviert.</div>';
-  header("location:index.php");
+  $_SESSION["Tisch1"] = array(1,2,3,4,$name);
+  header("location:index.php?result=gotrecords");
 
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
@@ -35,7 +36,8 @@ VALUES ('2020', '$month', '$day', '1', '$name', '$table')";
 if ($conn->query($sql) === TRUE) {
     $_SESSION["sucessmessage"] = '<div class="alert alert-success">
     Du hast den Tisch erfolgreich reserviert.</div>';
-    header("location:index.php");
+    $_SESSION["Tisch2"] = array(1,2,3,4,$name);
+    header("location:index.php?result=gotrecords");
   
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
@@ -54,7 +56,8 @@ VALUES ('2020', '$month', '$day', '1', '$name', '$table')";
 if ($conn->query($sql) === TRUE) {
     $_SESSION["sucessmessage"] = '<div class="alert alert-success">
     Du hast den Tisch erfolgreich reserviert.</div>';
-    header("location:index.php");
+    $_SESSION["Tisch3"] = array(1,2,3,4,$name);
+    header("location:index.php?result=gotrecords");
 
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
@@ -73,7 +76,8 @@ VALUES ('2020', '$month', '$day', '1', '$name', '$table')";
 if ($conn->query($sql) === TRUE) {
     $_SESSION["sucessmessage"] = '<div class="alert alert-success">
   Du hast den Tisch erfolgreich reserviert.</div>';
-  header("location:index.php");
+  $_SESSION["Tisch4"] = array(1,2,3,4,$name);
+  header("location:index.php?result=gotrecords");
 
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
@@ -92,7 +96,8 @@ VALUES ('2020', '$month', '$day', '1', '$name', '$table')";
 if ($conn->query($sql) === TRUE) {
     $_SESSION["sucessmessage"] = '<div class="alert alert-success">
     Du hast den Tisch erfolgreich reserviert.</div>';
-    header("location:index.php");
+    $_SESSION["Tisch5"] = array(1,2,3,4,$name);
+    header("location:index.php?result=gotrecords");
 
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
@@ -111,6 +116,7 @@ VALUES ('2020', '$month', '$day', '1', '$name', '$table')";
 if ($conn->query($sql) === TRUE) {
     $_SESSION["sucessmessage"] = '<div class="alert alert-success">
     Du hast den Tisch erfolgreich reserviert.</div>';
+    $_SESSION["Tisch6"] = array(1,2,3,4,$name);
     header("location:index.php");
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
