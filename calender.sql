@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2020-08-12 07:42:10
+Date: 2020-08-14 16:59:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,10 +28,24 @@ CREATE TABLE `calenderplanner` (
   `reserviertvon` varchar(16) NOT NULL,
   `tisch` int(16) NOT NULL,
   PRIMARY KEY (`uniqueid`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=173 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of calenderplanner
 -- ----------------------------
-INSERT INTO `calenderplanner` VALUES ('26', '2020', '5', '11', '1', 'Jannik', '1');
-INSERT INTO `calenderplanner` VALUES ('27', '2020', '12', '19', '1', 'fsdfsdf', '4');
+INSERT INTO `calenderplanner` VALUES ('167', '2020', '4', '6', '1', 'jannik', '8');
+INSERT INTO `calenderplanner` VALUES ('168', '2020', '4', '6', '1', 'jannik2', '7');
+
+-- ----------------------------
+-- Table structure for `users`
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `uniqueid` int(16) NOT NULL,
+  `users` varchar(16) DEFAULT NULL,
+  PRIMARY KEY (`uniqueid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
