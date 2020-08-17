@@ -14,6 +14,7 @@ if(isset($_POST['getTables']))
     $_SESSION["month_string"] = $_POST['month'];
 
     $_SESSION["day"] = $_POST['day'];
+    $_SESSION["year"] = $_POST['year'];
     $_SESSION["day_string"] = $_POST['day'];
     
 
@@ -63,126 +64,128 @@ if(isset($_POST['getTables']))
     
     $month = $_SESSION["month"];
     $day = $_SESSION["day"];
+    $year = $_SESSION["year"];
 
-    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day' AND tisch='1'";
+    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day'AND year='$year'  AND tisch='1'";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
         echo $row['uniqueid'].$row['year'].$row['month'].$row['day'].$row['reserviert'].$row['reserviertvon'].$row['tisch']."<br>" ;
-        $_SESSION["Tisch1"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch']);
+        $_SESSION["Tisch1"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch'],$row['year']);
       }
     } else
     {
         $_SESSION["Tisch1"] = "FREI";
-        echo $_SESSION["Tisch1"]."<br>";
+        //echo $_SESSION["Tisch1"]."<br>";
     }
 
-    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day' AND tisch='2'";
+    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day'AND year='$year' AND tisch='2'";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
         echo $row['uniqueid'].$row['year'].$row['month'].$row['day'].$row['reserviert'].$row['reserviertvon'].$row['tisch']."<br>" ;
-        $_SESSION["Tisch2"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch']);
+        $_SESSION["Tisch2"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch'],$row['year']);
       }
     } else
     {
         $_SESSION["Tisch2"] = "FREI";
-        echo $_SESSION["Tisch2"]."<br>";
+        //echo $_SESSION["Tisch2"]."<br>";
     }
 
-    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day' AND tisch='3'";
+    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day'AND year='$year'  AND tisch='3'";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
-        echo $row['uniqueid'].$row['year'].$row['month'].$row['day'].$row['reserviert'].$row['reserviertvon'].$row['tisch']."<br>" ;
-        $_SESSION["Tisch3"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch']);
+        //echo $row['uniqueid'].$row['year'].$row['month'].$row['day'].$row['reserviert'].$row['reserviertvon'].$row['tisch']."<br>" ;
+        $_SESSION["Tisch3"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch'],$row['year']);
+        //echo $_SESSION["Tisch3"][6];
       }
     } else
     {
         $_SESSION["Tisch3"] = "FREI";
-        echo $_SESSION["Tisch3"]."<br>";
+        //echo $_SESSION["Tisch3"]."<br>";
     }
 
-    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day' AND tisch='4'";
+    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day'AND year='$year' AND tisch='4'";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
         echo $row['uniqueid'].$row['year'].$row['month'].$row['day'].$row['reserviert'].$row['reserviertvon'].$row['tisch']."<br>" ;
-        $_SESSION["Tisch4"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch']);
+        $_SESSION["Tisch4"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch'],$row['year']);
       }
     } else
     {
         $_SESSION["Tisch4"] = "FREI";
-        echo $_SESSION["Tisch4"]."<br>";
+       // echo $_SESSION["Tisch4"]."<br>";
     }
 
-    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day' AND tisch='5'";
+    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day'AND year='$year' AND tisch='5'";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
         echo $row['uniqueid'].$row['year'].$row['month'].$row['day'].$row['reserviert'].$row['reserviertvon'].$row['tisch']."<br>" ;
-        $_SESSION["Tisch5"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch']);
+        $_SESSION["Tisch5"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch'],$row['year']);
       }
     } else
     {
         $_SESSION["Tisch5"] = "FREI";
-        echo $_SESSION["Tisch5"]."<br>";
+        //echo $_SESSION["Tisch5"]."<br>";
     }
 
-    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day' AND tisch='6'";
+    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day'AND year='$year' AND tisch='6'";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
         echo $row['uniqueid'].$row['year'].$row['month'].$row['day'].$row['reserviert'].$row['reserviertvon'].$row['tisch']."<br>" ;
-        $_SESSION["Tisch6"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch']);
+        $_SESSION["Tisch6"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch'],$row['year']);
       }
     } else
     {
         $_SESSION["Tisch6"] = "FREI";
-        echo $_SESSION["Tisch6"]."<br>";
+        //echo $_SESSION["Tisch6"]."<br>";
     }
     
-    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day' AND tisch='7'";
+    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day'AND year='$year' AND tisch='7'";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
         echo $row['uniqueid'].$row['year'].$row['month'].$row['day'].$row['reserviert'].$row['reserviertvon'].$row['tisch']."<br>" ;
-        $_SESSION["Park1"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch']);
+        $_SESSION["Park1"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch'],$row['year']);
       }
     } else
     {
         $_SESSION["Park1"] = "FREI";
-        echo $_SESSION["Park1"]."<br>";
+       // echo $_SESSION["Park1"]."<br>";
     }
 
     
-    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day' AND tisch='8'";
+    $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day'AND year='$year' AND tisch='8'";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
         echo $row['uniqueid'].$row['year'].$row['month'].$row['day'].$row['reserviert'].$row['reserviertvon'].$row['tisch']."<br>" ;
-        $_SESSION["Park2"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch']);
+        $_SESSION["Park2"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch'],$row['year']);
       }
     } else
     {
         $_SESSION["Park2"] = "FREI";
-        echo $_SESSION["Park2"]."<br>";
+        //echo $_SESSION["Park2"]."<br>";
     }
     
     header("location:index.php?result=gotrecords");

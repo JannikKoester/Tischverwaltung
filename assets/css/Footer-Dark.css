@@ -1,18 +1,13 @@
 .footer-dark {
-  margin-top:25px;
-  margin-left:-520px;
+  margin-left:-530px;
   color: #f0f9ff;
   background-color: #282d32;
   position: fixed;
-  height: 130px;
+  height: 60px;
   bottom: 0;
   width: 100%;
 }
 
-.footer-dark .row {
-  margin-top:30px;
-
-}
 
 .footer-dark h3 {
   margin-top: 0;

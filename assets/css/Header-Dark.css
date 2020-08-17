@@ -7,7 +7,7 @@ body {
 
 @media (min-width:768px) {
   .header-dark {
-    padding-bottom: 120px;
+ 
   }
 }
 
@@ -33,6 +33,7 @@ body {
 
 .header-dark .navbar .navbar-brand:hover {
   color: #f0f0f0;
+  
 }
 
 .header-dark .navbar .navbar-collapse span {
