@@ -1,6 +1,7 @@
-
 <!DOCTYPE html>
+<body>
 <?php
+    require 'required/header.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -11,38 +12,14 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 require 'settings.php';
 require 'modal.php';
-
 ?>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="bootstrap.min.css">
-<link rel="stylesheet" href="calender.css">
-<script src="tables.js"></script>
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<body style ="background-color:lightblue;">
 <div class="container">
-<?php
-require 'header.php';
-require 'footer.php';
-?>
+
 
                         <?php
                         if(isset($_GET['result']))
                         {
-                            if($_GET['result'] == "gotrecords")
+                            if($_GET['result'] == "gotrecords" || $_GET['result'] == "loggedin")
                             {   
                                     $selectedjan ='';
                                     $selectedfeb ='';
@@ -116,7 +93,7 @@ require 'footer.php';
 
                                 echo '<form action="getTables.php" method="post">
                                 <div class="form-group">
-                                <label for="sel1">Monat:</label>
+                                <label for="sel1"style="color:white;font-family:Bitter;font-size:32px;">Monat:</label>
                                 <select class="form-control" name="month">
                                 <option value ="Januar"'. $selectedjan.'>Januar</option>
                                 <option value ="Februar"'. $selectedfeb.'>Februar</option>
@@ -133,7 +110,7 @@ require 'footer.php';
                                 </select>';
                     echo '<div class="form-group">
         
-                    <label for="sel1">Tag:</label>
+                    <label for="sel1"style="color:white;font-family:Bitter;font-size:32px;">Tag:</label>
                     <select class="form-control" name="day">                   
                     <option value = '.$_SESSION["day"].' selected>'.$_SESSION["day"].'</option>
                       <option value ="1">1</option>
@@ -168,9 +145,9 @@ require 'footer.php';
                       <option value ="30">30</option>
                     </select>
                   </div>
-                  <button id="trigger" name="getTables" type="submit" class="btn btn-primary" id="aktualisiere">Aktualisiere erneut</button>
+                  <button id="trigger" name="getTables" type="submit" class="btnchange" id="aktualisiere">Aktualisiere erneut</button>
                   </form>
-                  <h2>'.$_SESSION["day_string"].'. '.$_SESSION["month_string"].' </h2>';
+                  <h2 style="color:white;font-family:Bitter; text-align:center;">'.$_SESSION["day_string"].'.  '.$_SESSION["month_string"].' </h2>';
                   
 
                 
@@ -182,7 +159,7 @@ require 'footer.php';
                         else{
                             echo '<form action="getTables.php" method="post">
                             <div class="form-group">
-                            <label for="sel1">Monat:</label>
+                            <label for="sel1" style="color:white;font-family:Bitter;font-size:32px;">Monat:</label>
                             <select class="form-control" name="month">
                             <option value ="Januar">Januar</option>
                             <option value ="Februar">Februar</option>
@@ -199,7 +176,7 @@ require 'footer.php';
                             </select>';
                 echo '<div class="form-group">
     
-                <label for="sel1">Tag:</label>
+                <label for="sel1"style="color:white;font-family:Bitter;font-size:32px;">Tag:</label>
                 <select class="form-control" name="day">
                   <option value ="1">1</option>
                   <option value ="2">2</option>
@@ -233,7 +210,7 @@ require 'footer.php';
                   <option value ="30">30</option>
                 </select>
               </div>
-              <button name="getTables" type="submit" class="btn btn-primary">Aktualisieren</button>
+              <button name="getTables" type="submit" class="btnchange">Aktualisieren</button>
               </form>';
               
     
@@ -249,7 +226,7 @@ require 'footer.php';
     <div>
 
 
-    <div class="container" >
+    <div class="container" style="background-color:lightgrey;opacity: 0.6;border:solid;" >
     
         <div class="right-tables">
             <ul>
@@ -262,7 +239,7 @@ require 'footer.php';
                             {   
                                 if($_SESSION["Tisch3"] == "FREI")
                                 {
-                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal3" style="color:green;">Tisch 3 <br> ist frei.</button>';
+                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal3" style="color:green;opacity: 1.5;">Tisch 3 <br> ist frei.</button>';
 
                                 }
                                 else
@@ -482,6 +459,10 @@ require 'footer.php';
         echo $_SESSION["sucessmessagereplaced"];
         $_SESSION["sucessmessagereplaced"]="";
      }
+     if(isset( $_SESSION["accnotfound"])){
+        echo $_SESSION["accnotfound"];
+        $_SESSION["accnotfound"]="";
+     }
                         
             
 ?>
@@ -494,20 +475,13 @@ require 'footer.php';
  
 
     </div>
-        <script type="text/javascript">
-              function codeAddress() {
-                if(document.getElementById('aktualisiere'))
-                {
-                    document.getElementById('aktualisiere').click();
-                }
-                else
-                {
-                    alert("nix gefunden");
-                }
-              }
-              
-              </script>
+<br>
+    <?php
+    require 'required/footer.php';
+    ?>
+
 </body>
+
 
 
 
@@ -539,13 +513,27 @@ require 'footer.php';
     
 }
 
-button:disabled,
-button[disabled]{
-  border: 3px solid red !important;
-
-  color: red !important;
+.btnchange {
+    background: #208f8f;
+  border-radius: 20px;
+  font-size: inherit;
+  color: #fff;
+  box-shadow: none;
+  border: none;
+  text-shadow: none;
+  padding: .5rem .8rem;
+  transition: background-color 0.25s;
+  height:90px;
+  width:200px;
 }
 
 
 </style>
+
+
+
+
+
+
+
 </html>
