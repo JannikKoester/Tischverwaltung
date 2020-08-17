@@ -108,11 +108,23 @@ require 'modal.php';
                                 <option value ="November"'. $selectednov.'>November</option>
                                 <option value ="Dezember"'. $selecteddez.'>Dezember</option>
                                 </select>';
+
+
+
                     echo '<div class="form-group">
         
                     <label for="sel1"style="color:white;font-family:Bitter;font-size:32px;">Tag:</label>
-                    <select class="form-control" name="day">                   
-                    <option value = '.$_SESSION["day"].' selected>'.$_SESSION["day"].'</option>
+                    <select class="form-control" name="day">';
+
+                    for ($i = 1; $i < 32; $i++) {
+                        if ($i == $_SESSION["day"]) {
+                            echo ("<option value='$i' selected>$i</option>");
+                        } else {
+                            echo ("<option value='$i'>$i</option>");
+                        }
+                    }
+
+                    /*echo '<option value = '.$_SESSION["day"].' selected>'.$_SESSION["day"].'</option>
                       <option value ="1">1</option>
                       <option value ="2">2</option>
                       <option value ="3">3</option>
@@ -142,8 +154,8 @@ require 'modal.php';
                       <option value ="27">27</option>
                       <option value ="28">28</option>
                       <option value ="29">29</option>
-                      <option value ="30">30</option>
-                    </select>
+                      <option value ="30">30</option>*/
+                      echo '</select>
                   </div>
                   <button id="trigger" name="getTables" type="submit" class="btnchange" id="aktualisiere">Aktualisiere erneut</button>
                   </form>
@@ -526,6 +538,10 @@ require 'modal.php';
   height:90px;
   width:200px;
 }
+.btnchange:hover {
+  background: #269d9d;
+}
+
 
 
 </style>

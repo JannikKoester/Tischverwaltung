@@ -20,13 +20,36 @@
                         <ul class="nav navbar-nav">
                             <li class="nav-item" role="presentation"><a class="nav-link" href="#">Home</a></li>
                         </ul>
-                        <form class="form-inline mr-auto" action="post">
-                        
-                    </form><span class="navbar-text"></span><a class="btn btn-light action-button" role="button" href="#">Einloggen</a></div>
-                </div>
+ <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+        <form class="form-inline" action="/action_page.php">
+  <input type="text" class="form-control" placeholder="Username" style="margin-right:10px;">
+  <input type="password" class="form-control" placeholder="Password"style="margin-right:10px;">
+  <button type="submit" class="btnheader">Einloggen</button>
+</form>
+        </ul>
+    </div>
             </nav>
 
                 </div>
             </div>
         </div>
     </div>
+    <style>
+.btnheader {
+    background: #208f8f;
+  border-radius: 20px;
+  font-size: inherit;
+  color: #fff;
+  box-shadow: none;
+  border: none;
+  text-shadow: none;
+  padding: .5rem .8rem;
+  transition: background-color 0.25s;
+}
+.btnheader:hover {
+  background: #269d9d;
+}
+
+  
+        </style>
