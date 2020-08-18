@@ -18,8 +18,9 @@
                     <div class="collapse navbar-collapse"
                         id="navcol-1">
                         <ul class="nav navbar-nav">
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Home</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Tischverwaltung</a></li>
                         </ul>
+                        <!--
  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
         <form class="form-inline" action="/action_page.php">
@@ -29,6 +30,7 @@
 </form>
         </ul>
     </div>
+    -->
             </nav>
 
                 </div>

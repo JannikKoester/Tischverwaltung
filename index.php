@@ -13,7 +13,7 @@ if (session_status() == PHP_SESSION_NONE) {
 require 'settings.php';
 require 'modal.php';
 ?>
-<div class="container">
+<div class="container-fluid">
 
 
                         <?php
@@ -215,10 +215,34 @@ require 'modal.php';
     <div>
 
 
-    <div class="container" style="background-color:lightgrey;opacity: 0.6;border:solid;" >
+    <div class="container-fluid" style="background-color:lightgrey;opacity: 0.6;border:solid; width:800px;" >
     
         <div class="right-tables">
-            <ul>
+            <ul>                 <li>
+                <div id="table4">
+                        <?php
+                        if(isset($_GET['result']))
+                        {
+                            if($_GET['result'] == "gotrecords")
+                            {   
+                                if($_SESSION["Tisch4"] == "FREI")
+                                {
+                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal4" style="color:green; width:120px;">Tisch 4 <br> ist frei.</button>';
+
+                                }
+                                else
+                                {
+                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal_change4" style="color:red;width:120px;" >Tisch 4 ist belegt durch <br>'.$_SESSION["Tisch4"][4].'.</button>';
+
+                                }
+
+                            }
+                        }
+                        ?>
+                        
+                        
+                    </div>
+                </li>
                 <li>
                 <div id="table3">
                         <?php
@@ -228,12 +252,12 @@ require 'modal.php';
                             {   
                                 if($_SESSION["Tisch3"] == "FREI" || $_SESSION["Tisch3"][6] != $_SESSION["year"] )
                                 {
-                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal3" style="color:green;opacity: 1.5;">Tisch 3 <br> ist frei.</button>';
+                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal3" style="color:green;opacity: 1.5;width:120px;">Tisch 3 <br> ist frei.</button>';
 
                                 }
                                 else
                                 {
-                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal_change3" style="color:red;">Tisch 3 ist belegt durch <br>'.$_SESSION["Tisch3"][4].'.</button>';
+                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal_change3" style="color:red;width:120px;">Tisch 3 ist belegt durch <br>'.$_SESSION["Tisch3"][4].'.</button>';
 
                                 }
 
@@ -302,31 +326,7 @@ require 'modal.php';
 
         <div class="left-tables">
             <ul>
-                <li>
-                <div id="table4">
-                        <?php
-                        if(isset($_GET['result']))
-                        {
-                            if($_GET['result'] == "gotrecords")
-                            {   
-                                if($_SESSION["Tisch4"] == "FREI")
-                                {
-                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal4" style="color:green;">Tisch 4 <br> ist frei.</button>';
 
-                                }
-                                else
-                                {
-                                    echo '<button id="buttonTable1" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal_change4" style="color:red;" >Tisch 4 ist belegt durch <br>'.$_SESSION["Tisch4"][4].'.</button>';
-
-                                }
-
-                            }
-                        }
-                        ?>
-                        
-                        
-                    </div>
-                </li>
 
                 <li>
 
