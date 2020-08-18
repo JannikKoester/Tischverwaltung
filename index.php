@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <body>
 <?php
+if(!file_exists("settings.php"))
+{
+    
+    header("location:install.php");
+}
     require 'required/header.php';
 
 if (session_status() == PHP_SESSION_NONE) {
