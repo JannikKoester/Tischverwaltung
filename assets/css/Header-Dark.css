@@ -1,15 +1,11 @@
 
 body {
-  background: url(../../assets/img/mountain_bg.jpg) #444;
-  background-size: cover;
+  background: url(../../assets/img/mountain_bg.jpg) blue;
+  height:100%;
   padding-bottom: 80px;
+  background-repeat:no-repeat;
 }
 
-@media (min-width:768px) {
-  .header-dark {
- 
-  }
-}
 
 .header-dark .navbar {
   background: transparent;
