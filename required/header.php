@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
     <link rel="stylesheet" href="assets/css/Header-Dark.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function refreshListe() {
+
+            $("#refresh").click();
+        }
+
+
+</script>
 </head>
 
 
@@ -20,17 +29,6 @@
                         <ul class="nav navbar-nav">
                             <li class="nav-item" role="presentation"><a class="nav-link" href="#">Tischverwaltung</a></li>
                         </ul>
-                        <!--
- <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-        <form class="form-inline" action="/action_page.php">
-  <input type="text" class="form-control" placeholder="Username" style="margin-right:10px;">
-  <input type="password" class="form-control" placeholder="Password"style="margin-right:10px;">
-  <button type="submit" class="btnheader">Einloggen</button>
-</form>
-        </ul>
-    </div>
-    -->
             </nav>
 
                 </div>

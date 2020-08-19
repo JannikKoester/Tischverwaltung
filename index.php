@@ -98,7 +98,7 @@ require 'modal.php';
                                 echo '<form action="getTables.php" method="post">
                                 <div class="form-group">
                                 <label for="sel1"style="color:white;font-family:Bitter;font-size:24px;">Jahr:</label>
-                                <select class="form-control" name="year">';
+                                <select class="form-control" name="year" onchange="refreshListe()">';
                                  for ($i=2020; $i <2030 ; $i++) { 
 
                                     if ($i == $_SESSION["year"]) {
@@ -115,7 +115,7 @@ require 'modal.php';
                                 echo '<form action="getTables.php" method="post">
                                 <div class="form-group">
                                 <label for="sel1"style="color:white;font-family:Bitter;font-size:24px;">Monat:</label>
-                                <select class="form-control" name="month">
+                                <select class="form-control" name="month"onchange="refreshListe()">
                                 <option value ="Januar"'. $selectedjan.'>Januar</option>
                                 <option value ="Februar"'. $selectedfeb.'>Februar</option>
                                 <option value ="März"'. $selectedmar.'>März</option>
@@ -135,7 +135,7 @@ require 'modal.php';
                     echo '<div class="form-group">
         
                     <label for="sel1"style="color:white;font-family:Bitter;font-size:24px;">Tag:</label>
-                    <select class="form-control" name="day">';
+                    <select class="form-control" name="day" onchange="refreshListe()">';
 
                     for ($i = 1; $i < 32; $i++) {
                         if ($i == $_SESSION["day"]) {
@@ -146,7 +146,7 @@ require 'modal.php';
                     }
                       echo '</select>
                   </div>
-                  <button id="trigger" name="getTables" type="submit" class="btnchange" id="aktualisiere">Aktualisiere erneut</button>
+                  <button id="refresh" name="getTables" type="submit" class="btnchange"style="display:none;" >Aktualisiere erneut</button>
                   </form>
                   <h2 style="color:white;font-family:Bitter; text-align:center;">'.$_SESSION["day_string"].'.  '.$_SESSION["month_string"].' '.$_SESSION["year"].' </h2>';
                   
@@ -161,7 +161,7 @@ require 'modal.php';
                             echo '<form action="getTables.php" method="post">
                             <div class="form-group">
                             <label for="sel1"style="color:white;font-family:Bitter;font-size:24px;">Jahr:</label>
-                            <select class="form-control" name="year">';
+                            <select class="form-control" name="year" onchange="refreshListe()">';
                              for ($i=2020; $i <2030 ; $i++) { 
 
                                 if ($i == $_SESSION["year"]) {
@@ -176,7 +176,7 @@ require 'modal.php';
                             echo '<form action="getTables.php" method="post">
                             <div class="form-group">
                             <label for="sel1" style="color:white;font-family:Bitter;font-size:24px;">Monat:</label>
-                            <select class="form-control" name="month">
+                            <select class="form-control" name="month"onchange="refreshListe()">
                             <option value ="Januar">Januar</option>
                             <option value ="Februar">Februar</option>
                             <option value ="März">März</option>
@@ -194,7 +194,7 @@ require 'modal.php';
                             echo '<div class="form-group">
         
                             <label for="sel1"style="color:white;font-family:Bitter;font-size:24px;">Tag:</label>
-                            <select class="form-control" name="day">';
+                            <select class="form-control" name="day" onchange="refreshListe()">';
         
                             for ($i = 1; $i < 32; $i++) {
                                 if ($i == $_SESSION["day"]) {
@@ -205,8 +205,8 @@ require 'modal.php';
                             }
                               echo '</select>
                           </div>
-              <button name="getTables" type="submit" class="btnchange">Aktualisieren</button>
-              </form>';
+                          <button id="refresh" name="getTables" type="submit" class="btnchange style="display:none;"" >Aktualisiere</button>
+                          </form>';
               
     
             }
@@ -471,9 +471,12 @@ require 'modal.php';
 
     </div>
 <br>
+
     <?php
     require 'required/footer.php';
     ?>
+
+
 
 </body>
 
