@@ -13,14 +13,5 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<div class="footer-dark">
-        <footer>
-            <div class="container">
-                <div class="row">
-                </div>
-                <p class="copyright">Rene Knipschild © 2020</p>
-            </div>
-        </footer>
-    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
