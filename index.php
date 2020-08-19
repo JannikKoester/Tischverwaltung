@@ -17,15 +17,8 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 require 'settings.php';
 require 'modal.php';
-
-
-
-
-
-
-
-
 ?>
+
 <div class="container-fluid">
 
 
