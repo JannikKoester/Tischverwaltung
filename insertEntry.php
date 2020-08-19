@@ -5,36 +5,36 @@ require 'settings.php';
 
 if(isset($_POST['reservierenBtnTisch1'])){
     $month = $_SESSION["month"];
-    $day = $_SESSION["day"];
+    $daystart=intval($_POST['daystart']);
+    $dayend = intval($_POST['dayend']);
     $name = $_POST['reservierterName'];
     $year = $_SESSION["year"];
     $table = 1;
+    
 
-    $sql = "INSERT INTO calenderplanner (year, month, day,reserviert,reserviertvon,tisch)
-VALUES ('$year', '$month', '$day', '1', '$name', '$table')";
-
-if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
-  $_SESSION["sucessmessage"] = '<div class="alert alert-success">
-  Du hast den Tisch erfolgreich reserviert.</div>';
-  $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day'AND year='$year'  AND tisch='1'";
-  $result = $conn->query($sql);
-  
-  if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-      //echo $row['uniqueid'].$row['year'].$row['month'].$row['day'].$row['reserviert'].$row['reserviertvon'].$row['tisch']."<br>" ;
-      $_SESSION["Tisch1"] = array($row['uniqueid'],$row['month'],$row['day'],$row['reserviert'],$row['reserviertvon'],$row['tisch'],$row['year']);
-      //echo $_SESSION["Tisch3"][6];
-    }
-  }
+if($daystart > $dayend)
+{
+  $_SESSION["errmsg"] = '<div class="alert alert-danger">
+  Fehler! Der Starttag lag über dem Endtag.</div>';
   header("location:index.php?result=gotrecords");
-
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+else{
+  for ($daystart; $daystart <= $dayend ; $daystart++) { 
+          
+    $sql = "INSERT INTO calenderplanner (year, month, day,reserviert,reserviertvon,tisch)
+    VALUES ('$year', '$month', '$daystart', '1', '$name', '$table')";
+    $conn->query($sql);
+    
+    
+}
+$_SESSION["sucessmessage"] = '<div class="alert alert-success">
+Du hast den Tisch erfolgreich reserviert.</div>';
+header("location:index.php");
 }
 
-}
+
+} 
+
 else if(isset($_POST['reservierenBtnTisch2'])){
     $month = $_SESSION["month"];
     $day = $_SESSION["day"];

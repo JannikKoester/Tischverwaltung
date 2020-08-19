@@ -1,13 +1,31 @@
+
+<script>
+          function ValidInputs(){
+            var e = document.getElementById("daystart");
+            var daystart = e.options[e.selectedIndex].value;
+            var b = document.getElementById("dayend");
+            var dayend = b.options[b.selectedIndex].value;
+            if(daystart > dayend)
+            {
+              document.getElementById("reservierenbutton").disabled = true;
+
+              alert("Starttag liegt nach dem Endtag");
+            }
+            else{
+
+              document.getElementById("reservierenbutton").disabled = false;
+            }
+            //alert(daystart +" " + dayend);
+            
+        }
+  </script>
+
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }else
 {
 
-}
-function selected()
-{
-  
 }
 ?>
 <!-- Modals für erstes belegen-->
@@ -21,7 +39,7 @@ function selected()
     
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Tisch 1</h4>
+        <h4 class="modal-title">Tisch 1 neu</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       
@@ -31,7 +49,38 @@ function selected()
       <h2>Geben Sie Ihren Namen ein:</h2>
             <label for="lname">Name:</label>
             <input type="text" id="lname" name="reservierterName"required><br><br>
-            <input class="btn btn-primary" type="submit" value="Reservieren" name="reservierenBtnTisch1" >
+            
+            <?php
+            echo '<h3>Reservieren von</h3>';
+            echo '<select class="form-control" name="daystart" id="daystart" onchange="ValidInputs()">';
+                             for ($i=1; $i <32 ; $i++) { 
+                              $month = $_SESSION['month_string'];
+                                if ($i == 1) {
+                                    echo "<option value='$i' selected>$i. $month</option>";
+                                } else {
+                                    echo "<option value ='$i'> $i. $month</option>";
+                                }
+                                
+                            }
+                            echo '</select>';
+                            echo '<h3>bis</h3>';
+                            echo '<select class="form-control" name="dayend" id="dayend" onchange="ValidInputs()">';
+                             for ($i=1; $i <32 ; $i++) { 
+                              $month = $_SESSION['month_string'];
+                                if ($i == 1) {
+                                    echo "<option value='$i' selected>$i. $month</option>";
+                                } else {
+                                    echo "<option value ='$i'> $i. $month</option>";
+                                }
+                                
+                            }
+                            echo '</select>';
+                            
+            ?>
+            <br>
+            
+
+            <input class="btn btn-primary" type="submit" id="reservierenbutton"value="Reservieren" name="reservierenBtnTisch1" >
         </form>
       </div>
       
