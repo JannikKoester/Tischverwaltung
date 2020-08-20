@@ -24,71 +24,8 @@
         <?php
         if (isset($_GET['result'])) {
             if ($_GET['result'] == "gotrecords" || $_GET['result'] == "loggedin") {
-                $selectedjan = '';
-                $selectedfeb = '';
-                $selectedmar = '';
-                $selectedapr = '';
-                $selectedmai = '';
-                $selectedjun = '';
-                $selectedjul = '';
-                $selectedaug = '';
-                $selectedsep = '';
-                $selectedokt = '';
-                $selectednov = '';
-                $selecteddez = '';
 
-                switch ($_SESSION["month_string"]) {
-
-                    case "Januar":
-                        $selectedjan = 'selected';
-                        break;
-
-                    case "Februar":
-                        $selectedfeb = 'selected';
-                        break;
-
-                    case "März":
-                        $selectedmar = 'selected';
-                        break;
-
-                    case "April":
-                        $selectedapr = 'selected';
-                        break;
-
-                    case "Mai":
-                        $selectedmai = 'selected';
-                        break;
-
-                    case "Juni":
-                        $selectedjun = 'selected';
-                        break;
-
-                    case "Juli":
-                        $selectedjul = 'selected';
-                        break;
-
-                    case "August":
-                        $selectedjaug = 'selected';
-                        break;
-
-                    case "September":
-                        $selectedsep = 'selected';
-                        break;
-
-                    case "Oktober":
-                        $selectedokt = 'selected';
-                        break;
-
-                    case "November":
-                        $selectednov = 'selected';
-                        break;
-
-                    case "Dezember":
-                        $selecteddez = 'selected';
-                        break;
-                }
-
-
+            //DROPDOWN JAHRE
                 echo '<form action="getTables.php" method="post">
                                 <div class="form-group">
                                 <label for="sel1"style="color:white;font-family:Bitter;font-size:24px;">Jahr:</label>
@@ -104,26 +41,25 @@
 
 
                 echo '</select>';
-
+            //DROPDOWN MONATE
+                $monate = array('Januar','Februar','März','April','Mai','Juni','Juli','August',
+                'September','Oktober','November','Dezember');
+                
                 echo '<form action="getTables.php" method="post">
-                                <div class="form-group">
-                                <label for="sel1"style="color:white;font-family:Bitter;font-size:24px;">Monat:</label>
-                                <select class="form-control" name="month"onchange="refreshListe()">
-                                <option value ="Januar"' . $selectedjan . '>Januar</option>
-                                <option value ="Februar"' . $selectedfeb . '>Februar</option>
-                                <option value ="März"' . $selectedmar . '>März</option>
-                                <option value ="April"' . $selectedapr . '>April</option>
-                                <option value ="Mai"' . $selectedmai . '>Mai</option>
-                                <option value ="Juni"' . $selectedjun . '>Juni</option>
-                                <option value ="Juli"' . $selectedjul . '>Juli</option>
-                                <option value ="August"' . $selectedaug . '>August</option>
-                                <option value ="September"' . $selectedsep . '>September</option>
-                                <option value ="Oktober"' . $selectedokt . '>Oktober</option>
-                                <option value ="November"' . $selectednov . '>November</option>
-                                <option value ="Dezember"' . $selecteddez . '>Dezember</option>
-                                </select>';
+                <div class="form-group">
+                <label for="sel1"style="color:white;font-family:Bitter;font-size:24px;">Monat:</label>
+                <select class="form-control" name="month"onchange="refreshListe()">';
+                for ($i=0; $i <12 ; $i++) { 
+                  if($monate[$i] == $_SESSION["month_string"])
+                  {
+                    echo ("<option value='$monate[$i]'selected>$monate[$i]</option>");
+                  }
+                  echo '<option value ='.$monate[$i].'>'.$monate[$i].'</option>';
+                }
+                
+                echo '</select>';
 
-
+            //DROPDOWN TAGE
 
                 echo '<div class="form-group">
         
@@ -145,6 +81,7 @@
             } else {
             }
         } else {
+            //DROPDOWN JAHRE
             echo '<form action="getTables.php" method="post">
                             <div class="form-group">
                             <label for="sel1"style="color:white;font-family:Bitter;font-size:24px;">Jahr:</label>
@@ -158,25 +95,24 @@
                 }
             }
             echo '</select>';
-
+            //DROPDOWN MONATE
+            $monate = array('Januar','Februar','März','April','Mai','Juni','Juli','August',
+            'September','Oktober','November','Dezember');
+            
             echo '<form action="getTables.php" method="post">
-                            <div class="form-group">
-                            <label for="sel1" style="color:white;font-family:Bitter;font-size:24px;">Monat:</label>
-                            <select class="form-control" name="month"onchange="refreshListe()">
-                            <option value ="Januar">Januar</option>
-                            <option value ="Februar">Februar</option>
-                            <option value ="März">März</option>
-                            <option value ="April">April</option>
-                            <option value ="Mai">Mai</option>
-                            <option value ="Juni">Juni</option>
-                            <option value ="Juli">Juli</option>
-                            <option value ="August">August</option>
-                            <option value ="September">September</option>
-                            <option value ="Oktober">Oktober</option>
-                            <option value ="November">November</option>
-                            <option value ="Dezember">Dezember</option>
-                            </select>';
-
+            <div class="form-group">
+            <label for="sel1"style="color:white;font-family:Bitter;font-size:24px;">Monat:</label>
+            <select class="form-control" name="month"onchange="refreshListe()">';
+            for ($i=0; $i <12 ; $i++) { 
+              if($monate[$i] == $_SESSION["month_string"])
+              {
+                echo ("<option value='$monate[$i]'selected>$monate[$i]</option>");
+              }
+              echo '<option value ='.$monate[$i].'>'.$monate[$i].'</option>';
+            }
+            
+            echo '</select>';
+            //DROPDOWN JAHRE
             echo '<div class="form-group">
         
                             <label for="sel1"style="color:white;font-family:Bitter;font-size:24px;">Tag:</label>

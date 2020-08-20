@@ -14,10 +14,6 @@
 
             $("#refresh").click();
         }
-        function ValidInputs(){
-            //var daystart = $( "#daystart:selected" ).text();
-            alert("daystart");
-        }
 
 
 </script>
