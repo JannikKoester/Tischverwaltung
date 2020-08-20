@@ -14,6 +14,9 @@
 
             $("#refresh").click();
         }
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+            })
 
 
 </script>
