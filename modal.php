@@ -28,7 +28,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 }
 ?>
-<!-- Modals für erstes belegen-->
+<!-- Modals für erstes belegen Mehrfachauswahl-->
     <div class="container">
 
 <!-- The Modal Tisch 1 -->

@@ -2,36 +2,13 @@
 session_start();
 
 require 'settings.php';
+require 'functions.php';
 
 if(isset($_POST['reservierenBtnTisch1'])){
-    $month = $_SESSION["month"];
-    $daystart=intval($_POST['daystart']);
-    $dayend = intval($_POST['dayend']);
-    $name = $_POST['reservierterName'];
-    $year = $_SESSION["year"];
-    $table = 1;
-    
-
-if($daystart > $dayend)
-{
-  $_SESSION["errmsg"] = '<div class="alert alert-danger">
-  Fehler! Der Starttag lag über dem Endtag.</div>';
-  header("location:index.php?result=gotrecords");
-}
-else{
-  for ($daystart; $daystart <= $dayend ; $daystart++) { 
-          
-    $sql = "INSERT INTO calenderplanner (year, month, day,reserviert,reserviertvon,tisch)
-    VALUES ('$year', '$month', '$daystart', '1', '$name', '$table')";
-    $conn->query($sql);
-    
-    
-}
-$_SESSION["sucessmessage"] = '<div class="alert alert-success">
-Du hast den Tisch erfolgreich reserviert.</div>';
-header("location:index.php");
-}
-
+  $daystart=$_POST['daystart'];
+  $dayend = $_POST['dayend'];
+  $name = $_POST['reservierterName'];
+  funcs::InsertDatas($conn, $daystart, $dayend, $name,1);
 
 } 
 
@@ -255,7 +232,3 @@ echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 }
-
-
-    
-?>
