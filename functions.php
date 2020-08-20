@@ -3,7 +3,7 @@ require 'settings.php';
 class Funcs
 {
 
-    public static function InsertDatas($conn, $ds, $de, $n,$tisch)
+    public static function InsertDatas($conn, $ds, $de, $n,$tisch,$tnum)
     {
         $day = $_SESSION["day"];
         $month = $_SESSION["month"];
@@ -21,14 +21,14 @@ class Funcs
     VALUES ('$year', '$month', '$daystart', '1', '$name', '$table')";
             $conn->query($sql);
         }
-        $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day'AND year='$year'  AND tisch='1'";
+        $sql = "SELECT * FROM calenderplanner WHERE month='$month' AND day='$day'AND year='$year'  AND tisch='$table'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
                 //echo $row['uniqueid'].$row['year'].$row['month'].$row['day'].$row['reserviert'].$row['reserviertvon'].$row['tisch']."<br>" ;
-                $_SESSION["Tisch1"] = array($row['uniqueid'], $row['month'], $row['day'], $row['reserviert'], $row['reserviertvon'], $row['tisch'], $row['year']);
+                $_SESSION[$tnum] = array($row['uniqueid'], $row['month'], $row['day'], $row['reserviert'], $row['reserviertvon'], $row['tisch'], $row['year']);
                 //echo $_SESSION["Tisch3"][6];
             }
             $_SESSION["sucessmessage"] = '<div class="alert alert-success">
